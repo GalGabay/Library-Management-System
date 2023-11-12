@@ -9,4 +9,8 @@ public class Book extends Writing {
         this.numPages = numPages;
     }
 
+    public String toString() {
+        return "Book " + getTitle() + " by " + author;
+    }
+
 }

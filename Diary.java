@@ -6,4 +6,8 @@ public class Diary extends Writing {
         super(title, price);
         this.author = author;
     }
+
+    public String toString() {
+        return "Dairy " + getTitle() + " by " + author;
+    }
 }

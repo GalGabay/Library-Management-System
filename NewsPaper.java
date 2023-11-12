@@ -8,4 +8,8 @@ public class NewsPaper extends  Writing {
         this.publishing = publishing;
         this.dateOfPublish = dateOfPublish;
     }
+
+    public String toString() {
+        return "Newspaper by " + publishing + " published on " + dateOfPublish;
+    }
 }

@@ -16,21 +16,27 @@ public class Main {
         //lb1.getUsersList();
         System.out.println();
 
-        Writing book1 = new Book("Hello", "Yuval Asraf", 30, 300);
-        Writing book2 = new Book("World", "Gal Gabay", 80, 25);
-        Writing book3 = new Book("HI", "Bony", 40, 476);
-        Writing book4 = new Book("I'm preety", "Yuval Asraf", 50, 118);
-        lb1.addWriting(book1);
-        lb1.addWriting(book2);
-        lb1.addWriting(book3);
-        lb1.addWriting(book4);
+        Writing write1 = new Book("Hello", "Yuval Asraf", 30, 300);
+        Writing write2 = new Diary("World",80, "Gal Gabay");
+        Writing write3 = new NewsPaper("HI", 5, "The Times", "14/10/2023");
+        Writing write4 = new Book("I'm preety", "Yuval Asraf", 50, 118);
+        lb1.addWriting(write1);
+        lb1.addWriting(write2);
+        lb1.addWriting(write3);
+        lb1.addWriting(write4);
+        System.out.println(write1);
+        System.out.println(write2);
+        System.out.println(write3);
+        System.out.println(write4);
+       // lb1.getWritingList();
+        System.out.println();
 
-        //lb1.getBooksList();
+        lb1.borrowWriting(user2, write3);
+        lb1.borrowWriting(user1, write2);
 
-        lb1.borrowWriting(user2, book3);
-        lb1.borrowWriting(user1, book2);
+        lb1.returnWriting(user2, write3);
 
-        lb1.returnWriting(user2, book3);
+        System.out.println();
 
         System.out.println("Transactions history: ");
         lb1.getTransactionsList();
@@ -39,10 +45,10 @@ public class Main {
         user2.getBorrowingHistory();
         user1.getBorrowingHistory();
 
-        if(book3.getOwner() != null)
-            System.out.println("Owner of book3 is: " + book3.getOwner().getUserName());
-        if(book2.getOwner() != null)
-            System.out.println("Owner of book2 is: " + book2.getOwner().getUserName());
+        if(write3.getOwner() != null)
+            System.out.println("Owner of write3 is: " + write3.getOwner().getUserName());
+        if(write2.getOwner() != null)
+            System.out.println("Owner of write2 is: " + write2.getOwner().getUserName());
 
 
     }

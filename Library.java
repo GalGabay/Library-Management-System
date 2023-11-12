@@ -57,7 +57,13 @@ public class Library {
 
     public void getWritingList() {
         for( Writing write : writingList) {
-            System.out.println(write.getTitle());
+            System.out.print(write.getTitle());
+            if(write instanceof Book)
+                System.out.println(" is a Book");
+            else if(write instanceof Diary)
+                System.out.println(" is a Diary");
+            else
+                System.out.println(" is a Newspaper");
         }
     }
 
