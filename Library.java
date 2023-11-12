@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Library {
 
     private String libraryName;
-    private ArrayList<Book> booksList;
+    private ArrayList<Writing> writingList;
     private ArrayList<User> usersList;
     private ArrayList<Transaction> transactionsList;
     private Integer dueDate; // how many days you can borrow a book before you are fined
@@ -11,34 +11,34 @@ public class Library {
 
     public Library(String libraryName, Integer dueDate, Integer fine) {
         this.libraryName = libraryName;
-        this.booksList = new ArrayList<>();
+        this.writingList = new ArrayList<>();
         this.usersList = new ArrayList<>();
         this.transactionsList = new ArrayList<>();
         this.fine = fine;
         this.dueDate = dueDate;
     }
 
-    public Boolean addBook(Book addedBook) {
-        for (Book book : booksList) {
-            if(book.equals(addedBook)) {
+    public Boolean addWriting(Writing addedWriting) {
+        for (Writing write : writingList) {
+            if(write.equals(addedWriting)) {
                 return false;
             }
         }
-        return booksList.add(addedBook);
+        return writingList.add(addedWriting);
     }
 
-    public Boolean removeBook(Book removedBook) {
-        return booksList.remove(removedBook);
+    public Boolean removeWriting(Writing removedWriting) {
+        return writingList.remove(removedWriting);
     }
 
     public void addUser(User newUser) {
         usersList.add(newUser);
     }
 
-    public Book searchBook(Book searchedBook) {
-        for(Book book : booksList) {
-            if(book.equals(searchedBook)) {
-                return book;
+    public Writing searchWriting(Writing searchedWriting) {
+        for(Writing write : writingList) {
+            if(write.equals(searchedWriting)) {
+                return write;
             }
         }
         return null;
@@ -55,28 +55,28 @@ public class Library {
         }
     }
 
-    public void getBooksList() {
-        for( Book book : booksList) {
-            System.out.println(book.getTitle());
+    public void getWritingList() {
+        for( Writing write : writingList) {
+            System.out.println(write.getTitle());
         }
     }
 
-    public Boolean borrowBook(User user, Book desiredBook) {
-        for(Book book : booksList) {
-            if(book.equals(desiredBook)) {
-                if(book.getIsAvailable()) {
-                    if(user.getCash() >= book.getPrice()) {
-                        Transaction newTrans = new Transaction(user,book);
+    public Boolean borrowWriting(User user, Writing desiredWriting) {
+        for(Writing write : writingList) {
+            if(write.equals(desiredWriting)) {
+                if(write.getIsAvailable()) {
+                    if(user.getCash() >= write.getPrice()) {
+                        Transaction newTrans = new Transaction(user,write);
                         newTrans.borrowBook();
                         transactionsList.add(newTrans);
-                        System.out.println("You borrowed " + desiredBook.getTitle() +  ". Have a nice reading!");
+                        System.out.println("You borrowed " + desiredWriting.getTitle() +  ". Have a nice reading!");
                         return true;
                     } else {
                         System.out.println("You don't have enough money");
                         return false;
                     }
                 } else {
-                    System.out.println("The book is not available...sorry");
+                    System.out.println("The write is not available...sorry");
                     return false;
                 }
             }
@@ -84,15 +84,15 @@ public class Library {
         return false;
     }
 
-    public void returnBook(User user, Book returnedBook) {
+    public void returnWriting(User user, Writing returnedWriting) {
         for(Transaction transaction: transactionsList) {
-            if(transaction.getBookInvolved().equals(returnedBook) && transaction.getUserInvolved().equals(user)) {
+            if(transaction.getWritingInvolved().equals(returnedWriting) && transaction.getUserInvolved().equals(user)) {
                 Boolean isFine = transaction.returnBook(dueDate);
                 if(!isFine) {
                     System.out.println("You had this book too many days! you have a fine of: " + fine);
                     user.setCash(user.getCash()-fine);
                 } else {
-                    System.out.println("You returned " + returnedBook.getTitle() + " successfully. thank you!");
+                    System.out.println("You returned " + returnedWriting.getTitle() + " successfully. thank you!");
                 }
             }
         }

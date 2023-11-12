@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class User {
 
     private String userName;
-    private ArrayList<Book> borrowingHistory;
+    private ArrayList<Writing> borrowingHistory;
     private Integer cash;
 
     public User(String userName, Integer cash) {
@@ -20,11 +20,11 @@ public class User {
         this.userName = userName;
     }
 
-    public void addBookToList(Book book) {
-        borrowingHistory.add(book);
+    public void addWritingToList(Writing write) {
+        borrowingHistory.add(write);
     }
-    public Boolean removeBookFromList(Book book) {
-        return borrowingHistory.remove(book);
+    public Boolean removeWritingFromList(Writing write) {
+        return borrowingHistory.remove(write);
     }
 
     public void setCash(Integer cash) {
@@ -35,8 +35,8 @@ public class User {
     }
 
     public void getBorrowingHistory() {
-        for(Book book : borrowingHistory) {
-            System.out.println(userName + " borrowed " + book.getTitle());
+        for(Writing write : borrowingHistory) {
+            System.out.println(userName + " borrowed " + write.getTitle());
         }
     }
 

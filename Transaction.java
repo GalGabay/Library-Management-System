@@ -9,14 +9,14 @@ public class Transaction {
 
     private int transactionId;
     private User userInvolved;
-    private Book bookInvolved;
+    private Writing writingInvolved;
     private String dateBorrowed;
     private String dateReturned;
 
-    public Transaction(User userInvolved, Book bookInvolved) {
+    public Transaction(User userInvolved, Writing writingInvolved) {
         this.transactionId = (int)(Math.random() * 10000) + 1;
         this.userInvolved = userInvolved;
-        this.bookInvolved = bookInvolved;
+        this.writingInvolved = writingInvolved;
         this.dateReturned = null;
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -25,10 +25,10 @@ public class Transaction {
     }
 
     public void borrowBook() {
-        bookInvolved.setIsAvailable(false);
-        bookInvolved.setOwner(userInvolved);
-        userInvolved.addBookToList(bookInvolved);
-        userInvolved.setCash(userInvolved.getCash()-bookInvolved.getPrice());
+        writingInvolved.setIsAvailable(false);
+        writingInvolved.setOwner(userInvolved);
+        userInvolved.addWritingToList(writingInvolved);
+        userInvolved.setCash(userInvolved.getCash()-writingInvolved.getPrice());
     }
 
     public Boolean returnBook(Integer dueDate) {
@@ -41,8 +41,8 @@ public class Transaction {
             return false;
         } else {
             this.dateReturned = dtf.format(now);
-            bookInvolved.setIsAvailable(true);
-            bookInvolved.setOwner(null);
+            writingInvolved.setIsAvailable(true);
+            writingInvolved.setOwner(null);
             return true;
         }
 
@@ -52,12 +52,12 @@ public class Transaction {
     public User getUserInvolved() {
         return userInvolved;
     }
-    public Book getBookInvolved() {
-        return bookInvolved;
+    public Writing getWritingInvolved() {
+        return this.writingInvolved;
     }
 
     public String toString() {
-        String output =  "Transaction " + transactionId + " : user " + userInvolved.getUserName() + " Borrowed book " + bookInvolved.getTitle() + " on " + dateBorrowed;
+        String output =  "Transaction " + transactionId + " : user " + userInvolved.getUserName() + " Borrowed  " + writingInvolved.getTitle() + " on " + dateBorrowed;
         if(dateReturned != null) {
             output += " and returned on " + dateReturned;
         }

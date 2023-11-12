@@ -16,21 +16,21 @@ public class Main {
         //lb1.getUsersList();
         System.out.println();
 
-        Book book1 = new Book("Hello", "Yuval Asraf", 30);
-        Book book2 = new Book("World", "Gal Gabay", 80);
-        Book book3 = new Book("HI", "Bony", 40);
-        Book book4 = new Book("I'm preety", "Yuval Asraf", 50);
-        lb1.addBook(book1);
-        lb1.addBook(book2);
-        lb1.addBook(book3);
-        lb1.addBook(book4);
+        Writing book1 = new Book("Hello", "Yuval Asraf", 30, 300);
+        Writing book2 = new Book("World", "Gal Gabay", 80, 25);
+        Writing book3 = new Book("HI", "Bony", 40, 476);
+        Writing book4 = new Book("I'm preety", "Yuval Asraf", 50, 118);
+        lb1.addWriting(book1);
+        lb1.addWriting(book2);
+        lb1.addWriting(book3);
+        lb1.addWriting(book4);
 
         //lb1.getBooksList();
 
-        lb1.borrowBook(user2, book3);
-        lb1.borrowBook(user1, book2);
+        lb1.borrowWriting(user2, book3);
+        lb1.borrowWriting(user1, book2);
 
-        lb1.returnBook(user2, book3);
+        lb1.returnWriting(user2, book3);
 
         System.out.println("Transactions history: ");
         lb1.getTransactionsList();
