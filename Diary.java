@@ -7,6 +7,13 @@ public class Diary extends Writing {
         this.author = author;
     }
 
+    public String getAuthor() {
+        return this.author;
+    }
+    public void setAuthor(String newAuthor) {
+        this.author = newAuthor;
+    }
+
     public String toString() {
         return "Dairy " + getTitle() + " by " + author;
     }
