@@ -9,7 +9,20 @@ public class NewsPaper extends  Writing {
         this.dateOfPublish = dateOfPublish;
     }
 
+    public String getPublishing() {
+        return publishing;
+    }
+    public String getDateOfPublish() {
+        return dateOfPublish;
+    }
+    public void setPublishing(String newPublishing) {
+        this.publishing = newPublishing;
+    }
+    public void setDateOfPublish(String dateOfPublish) {
+        this.dateOfPublish = dateOfPublish;
+    }
+
     public String toString() {
-        return "Newspaper by " + publishing + " published on " + dateOfPublish;
+        return getTitle() + " is a Newspaper by " + publishing + " published on " + dateOfPublish;
     }
 }

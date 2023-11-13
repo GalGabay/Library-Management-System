@@ -24,14 +24,15 @@ public class Transaction {
         this.dateBorrowed = dtf.format(now);
     }
 
-    public void borrowBook() {
+    public void borrowWriting() {
         writingInvolved.setIsAvailable(false);
         writingInvolved.setOwner(userInvolved);
         userInvolved.addWritingToList(writingInvolved);
         userInvolved.setCash(userInvolved.getCash()-writingInvolved.getPrice());
+        userInvolved.setCurrentlyOwn(writingInvolved);
     }
 
-    public Boolean returnBook(Integer dueDate) {
+    public Boolean returnWriting(Integer dueDate) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
 
@@ -43,6 +44,7 @@ public class Transaction {
             this.dateReturned = dtf.format(now);
             writingInvolved.setIsAvailable(true);
             writingInvolved.setOwner(null);
+            userInvolved.setCurrentlyOwn(null);
             return true;
         }
 

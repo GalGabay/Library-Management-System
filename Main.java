@@ -49,7 +49,13 @@ public class Main {
             System.out.println("Owner of write3 is: " + write3.getOwner().getUserName());
         if(write2.getOwner() != null)
             System.out.println("Owner of write2 is: " + write2.getOwner().getUserName());
+        if(user2.getCurrentlyOwn() != null)
+            System.out.println(user2.getUserName() + " owns " + user2.getCurrentlyOwn());
+        if(user1.getCurrentlyOwn() != null)
+            System.out.println(user1.getUserName() + " owns " + user1.getCurrentlyOwn());
 
+
+        System.out.println(lb1.searchWriting());
 
     }
 }
